@@ -23,6 +23,22 @@
                                     </span>
                                 @enderror
                             </div>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">parent</label>
+                            <div class="col-md-6">
+                                <select  type="text" class="form-control " name="parent_id"   >
+                                {{$users = \App\User::all()}}
+                                    <option value="">خالی</option>
+                                    @foreach($users as $user)
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
 
                         <div class="form-group row">

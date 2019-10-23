@@ -20,6 +20,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/css/sweetalert.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -86,7 +87,9 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">علیرضا حسینی زاده</span>
+                            @if(auth()->check())
+                            <span class="hidden-xs">{{auth()->user()->name}}</span>
+                            @endif
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -99,7 +102,10 @@
                                     <a href="#" class="btn btn-default btn-flat">پروفایل</a>
                                 </div>
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">خروج</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="post" >
+                                        @csrf
+                                        <button type="submit" class="btn btn-default btn-flat">خروج</button>
+                                    </form>
                                 </div>
                             </li>
                         </ul>
@@ -115,7 +121,42 @@
     <!-- right side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
-    @yield('menu')
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-right image">
+                    <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-right info">
+                    @if(auth()->check())
+                        <p>{{auth()->user()->name}}</p>
+                    @endif
+                    <a href="#"><i class="fa fa-circle text-success"></i> آنلاین</a>
+                </div>
+            </div>
+            <!-- search form -->
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="جستجو">
+                    <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+                </div>
+            </form>
+            <!-- /.search form -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+
+        </section>
+        <li class=" treeview">
+            <a href="{{route('user.index')}}">
+                <i class="fa"> کاربران</i>
+            </a>
+            <a href="{{}}">
+                <i class="fa"> کاربران</i>
+            </a>
+
+        </li>
         <!-- /.sidebar -->
     </aside>
 
