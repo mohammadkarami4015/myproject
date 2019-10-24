@@ -37,7 +37,9 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-
+       User::create($request->only(['name','parent_id','email',bcrypt('password')]));
+        $request->session()->flash('flash_message', 'کاربر جدید با موفقیت ثبت شد');
+        return back();
     }
 
     /**
@@ -57,9 +59,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('user.edit',compact('user'));
     }
 
     /**
@@ -69,9 +71,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request,User $user)
     {
-        //
+        $user->update([
+           'name'=>$request->name,
+           'parent_id'=>$request->parent_id,
+           'email'=>$request->email,
+           'password'=>bcrypt($request->password),
+        ]);
+
+        $request->session()->flash('flash_message', 'ویرایش کاربر با موفقیت انجام شد');
+        return back();
+
     }
 
     /**

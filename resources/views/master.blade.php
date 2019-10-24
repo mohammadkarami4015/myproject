@@ -148,15 +148,26 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
 
         </section>
-        <li class=" treeview">
-            <a href="{{route('user.index')}}">
-                <i class="fa"> کاربران</i>
-            </a>
-            <a href="{{}}">
-                <i class="fa"> کاربران</i>
-            </a>
 
-        </li>
+
+        <ul class="sidebar-menu tree" data-widget="tree">
+            <li class="header">منو</li>
+            <li class="active">
+                <a href="{{route('user.index')}}">
+                    <span>مدیریت کاربران</span>
+                </a>
+
+            </li>
+            <li class="active">
+                <a href="{{route('role.index')}}">
+                    <span>مدیریت نقش ها</span>
+                </a>
+
+            </li>
+
+        </ul>
+
+
         <!-- /.sidebar -->
     </aside>
 
@@ -174,6 +185,8 @@
             <!-- Default box -->
   @yield('content')
             <!-- /.box -->
+            @include('partials.error')
+            @include('partials.flash')
 
         </section>
         <!-- /.content -->
@@ -181,7 +194,6 @@
     <!-- /.content-wrapper -->
 
     <footer class="main-footer text-left">
-        <strong>Copyleft &copy; 2014-2017 <a href="https://adminlte.io">Almsaeed Studio</a> & <a href="http://hosseinizadeh.ir/adminlte">Alireza Hosseinizadeh</a></strong>
     </footer>
 
     <!-- Control Sidebar -->

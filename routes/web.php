@@ -18,3 +18,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('/user','UserController');
+Route::resource('/role','RoleController');
