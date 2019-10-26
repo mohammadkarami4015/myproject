@@ -37,7 +37,7 @@ class RoleController extends Controller
         ]);
 
         $role->permissions()->sync($request->input('permission_id'));
-        $request->session()->flash('flash_message', 'record was successful added!...');
+        $request->session()->flash('flash_message', 'نقش مورد نطر با موفقیت اضافه شد!...');
         return back();
     }
 
@@ -56,14 +56,14 @@ class RoleController extends Controller
             'title' =>$request->title,
         ]);
         $role->permissions()->sync($request->input('permission_id'));
-        $request->session()->flash('flash_message', 'record was successful updated!...');
+        $request->session()->flash('flash_message', 'نقش مورد نطر با موفقیت ویرایش شد!...');
         return back();
     }
 
     public function destroy(Request $request, Role $role)
     {
         $role->delete();
-        $request->session()->flash('flash_message', 'record was successful updated!...');
+        $request->session()->flash('flash_message', 'نقش مورد نطر با موفقیت حذف شد!...');
         return back();
     }
 }

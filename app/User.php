@@ -36,9 +36,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function letters()
+    public function letter()
     {
         return $this->hasMany(Letter::class);
+    }
+
+    public function letters()
+    {
+        return $this->belongsToMany(Letter::class);
     }
 
     public function roles()

@@ -170,7 +170,7 @@
             </li>
             <li class="active">
                 <a href="{{route('letter.index')}}">
-                    <span>مدیریت نامه هاا</span>
+                    <span>مدیریت نامه ها</span>
                 </a>
 
             </li>

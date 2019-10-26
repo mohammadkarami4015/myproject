@@ -37,7 +37,12 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-       User::create($request->only(['name','parent_id','email',bcrypt('password')]));
+        User::create([
+            'name'=>$request->name,
+            'parent_id'=>$request->parent_id,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password),
+        ]);
         $request->session()->flash('flash_message', 'کاربر جدید با موفقیت ثبت شد');
         return back();
     }
