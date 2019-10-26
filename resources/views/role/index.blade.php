@@ -12,14 +12,12 @@
     <div class="box-body table-responsive no-padding">
         <table class="table table-hover">
             <tbody><tr>
-                <th>کاربر</th>
-                <th>email</th>
-                <th>زیرشاخه</th>
+                <th>عنوان نقش</th>
                 <th>تنظیمات</th>
             </tr>
-            @foreach($users as $user)
+            @foreach($roles as $role)
                 <tr>
-                    <td>{{$user->name}}</td>
+                    <td>{{$role->title}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->parent['name']}}</td>
                     <td>
