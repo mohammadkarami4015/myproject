@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::resource('/user','UserController');
 Route::resource('/role','RoleController');
+Route::resource('/letter','LetterController');

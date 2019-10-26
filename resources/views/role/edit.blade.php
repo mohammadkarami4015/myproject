@@ -5,48 +5,40 @@
 
 @section('content')
     <div class="box box-primary">
-        <form role="form" method="post" action="{{route('user.update',['id'=>$user->id])}}">
+        <form role="form" method="post" action="{{route('role.update',['id'=>$role->id])}}">
             {{csrf_field()}}
-            {{method_field('patch')}}
+            {{method_field('PATCH')}}
             <div class="box-body">
                 <div class="col-md-8">
                     <label for="exampleInputEmail1">نام</label>
-                    <input type="name" name="name" class="form-control" id="exampleInputEmail1" value="{{$user->name}}">
+                    <input type="name" name="title" class="form-control" id="exampleInputEmail1" value="{{$role->title}}">
                 </div>
 
                 <div class="col-md-8">
-                    <label for="exampleInputEmail1">زیر مجموعه</label>
-                    <select  type="text" class="form-control " name="parent_id" >
-                        {{$users = \App\User::all()}}
-                        <option value=""></option>
-                        @foreach($users as $value)
-
-                            <option  {{$value->id == $user->parent_id    ?'selected':''}} value="{{$value->id}}">{{$value->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="col-md-8">
-                    <label for="exampleInputEmail1">ایمیل</label>
-                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" value="{{$user->email}}">
-                </div>
-                <div class="col-md-8">
-                    <label for="exampleInputPassword1">رمز عبور</label>
-                    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="رمز عبور">
-                </div>
-                <div class="col-md-8">
-                    <label for="exampleInputPassword1">تکرار رمز عبور</label>
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>انتخاب دسترسی</label>
+                            @foreach($permissions as $value)
+                                <div class="checkbox">
+                                    <label>
+                                        <input {{in_array(($value->id),$role->permissions->pluck('id')->toArray()) ? 'checked' : ''}} name="permission_id[]" value="{{$value->id}}" type="checkbox">
+                                        {{$value->title}}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /.box-body -->
 
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary">ارسال</button>
-                <a href="{{route('user.index')}}"><button   type="button" class="btn btn-success">بازگشت </button></a>
+                <button type="submit" class="btn btn-primary">افزودن</button>
+                <a href="{{route('role.index')}}"><button   type="button" class="btn btn-success">بازگشت </button></a>
             </div>
         </form>
     </div>
 
 
 @endsection
+

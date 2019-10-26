@@ -29,16 +29,14 @@ class RoleController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:30',
-            'label' => 'required|max:30'
+
         ]);
 
         $role = Role::create([
             'title' => $request->input('title'),
-            'label' => $request->input('label'),
         ]);
 
         $role->permissions()->sync($request->input('permission_id'));
-
         $request->session()->flash('flash_message', 'record was successful added!...');
         return back();
     }
@@ -53,25 +51,19 @@ class RoleController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:30',
-            'label' => 'required|max:30'
         ]);
         $role->update([
             'title' =>$request->title,
-            'label' =>$request->label,
         ]);
         $role->permissions()->sync($request->input('permission_id'));
-        // Display a Message
         $request->session()->flash('flash_message', 'record was successful updated!...');
-        // redirect back()
         return back();
     }
 
     public function destroy(Request $request, Role $role)
     {
         $role->delete();
-        // Display a Message
         $request->session()->flash('flash_message', 'record was successful updated!...');
-        // redirect back()
         return back();
     }
 }

@@ -14,7 +14,7 @@ class LetterController extends Controller
      */
     public function index()
     {
-        //
+        $letter = Letter::latest()->paginate(20);
     }
 
     /**
@@ -24,7 +24,7 @@ class LetterController extends Controller
      */
     public function create()
     {
-        //
+        return  view('letter.create');
     }
 
     /**
