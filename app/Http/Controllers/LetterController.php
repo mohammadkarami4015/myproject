@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Letter;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LetterController extends Controller
@@ -16,7 +17,7 @@ class LetterController extends Controller
     public function index()
     {
         $letters = Letter::latest()->paginate(20);
-        return view('letter.index',compact('letters'));
+        return view('letter.index', compact('letters'));
     }
 
     /**
@@ -27,68 +28,69 @@ class LetterController extends Controller
     public function create()
     {
         $users = User::all();
-        return  view('letter.create',compact('users'));
+        return view('letter.create', compact('users'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-
-
         $this->validate($request, [
             'title' => 'required|max:30',
             'details' => 'required|min:10',
         ]);
-        if(auth()->check()){
-           $letter =  Letter::create([
-               'title'=>$request->title,
-               'details'=>$request->details,
-                'user_id'=>auth()->user()->id
+
+        if (auth()->check()) {
+            $letter = Letter::create([
+                'title' => $request->title,
+                'details' => $request->details,
+                'user_id' => auth()->user()->id
             ]);
-           $letter->users()->attach($request->id,$request->user_id,$request->exp_time);
-
-            $letter->users()->sync([$request->id => ['user_id' => 3]]);
-
+            if ($request->has('user_id')) {
+                foreach ($request->user_id as $userId) {
+                    $letter->users()->attach($userId, ['exp_time' => Carbon::parse("+" . $request->exp_time[$userId] . " hour")]);
+                }
+//                for ($i = 0; $i < count($request->user_id); $i++) {
+//                    $letter->users()->attach($request->user_id[$i], ['exp_time' => Carbon::parse("+" . $request->exp_time[$i] . " hours")]);
+//                }
+            }
             $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت اضافه شد!...');
             return back();
         }
-
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Letter  $letter
+     * @param \App\Letter $letter
      * @return \Illuminate\Http\Response
      */
     public function show(Letter $letter)
     {
-        return view('letter.details',compact('letter'));
+        return view('letter.details', compact('letter'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Letter  $letter
+     * @param \App\Letter $letter
      * @return \Illuminate\Http\Response
      */
     public function edit(Letter $letter)
     {
         $users = User::all();
-        return view('letter.edit',compact('letter','users'));
+        return view('letter.edit', compact('letter', 'users'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Letter  $letter
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Letter $letter
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Letter $letter)
@@ -98,10 +100,10 @@ class LetterController extends Controller
             'title' => 'required|max:30',
             'details' => 'required|min:10',
         ]);
-        if(auth()->check()){
+        if (auth()->check()) {
             $letter->update([
-                'title'=>$request->title,
-                'details'=>$request->details
+                'title' => $request->title,
+                'details' => $request->details
             ]);
             $letter->users()->sync($request->input('user_id'));
             $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت ویرایش شد!...');
@@ -113,10 +115,10 @@ class LetterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Letter  $letter
+     * @param \App\Letter $letter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,Letter $letter)
+    public function destroy(Request $request, Letter $letter)
     {
         $letter->delete();
         $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت حذف شد!...');

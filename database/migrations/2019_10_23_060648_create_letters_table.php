@@ -24,8 +24,8 @@ class CreateLettersTable extends Migration
         });
         Schema::create('letter_user', function (Blueprint $table) {
 
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('letter_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('letter_id')->references('id')->on('letters')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('exp_time')->default(null);

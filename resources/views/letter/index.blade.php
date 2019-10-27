@@ -34,6 +34,10 @@
 
 
             </tbody></table>
+    <div style="margin-right: 40%">
+        {{$letters->links()}}
+
+    </div>
     </div>
 
 

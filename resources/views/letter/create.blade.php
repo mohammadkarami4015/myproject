@@ -31,7 +31,7 @@
                                         {{$user->name}}
                                         <br>
                                         <label>  به مدت  </label>
-                                        <select class="form-control" name="exp_time[user]" id="">
+                                        <select class="form-control" name="exp_time[{{$user->id}}]" id="">
                                             <option value="1">یک ساعت</option>
                                             <option value="5">پنج ساعت</option>
                                             <option value="24">یک روز</option>

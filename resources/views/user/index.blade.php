@@ -38,6 +38,10 @@
 
 
             </tbody></table>
+        <div style="margin-right: 40%">
+            {{$users->links()}}
+
+        </div>
     </div>
 
 
