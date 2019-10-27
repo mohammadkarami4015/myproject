@@ -4,13 +4,13 @@
     <list default="true" id="8df3e024-a298-43ba-b4cd-47287da5837c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LetterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LetterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Letter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Letter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_23_060648_create_letters_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_23_060648_create_letters_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/letter/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/letter/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/letter/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/letter/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/role/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/role/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/letter/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/letter/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +40,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/Http/Controllers/LetterController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -141,7 +144,7 @@
     <property name="last_opened_file_path" value="C:/wamp64/www/lll" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -182,7 +185,8 @@
       <workItem from="1571810081323" duration="22038000" />
       <workItem from="1571909290365" duration="7509000" />
       <workItem from="1572064546328" duration="25227000" />
-      <workItem from="1572150995040" duration="5367000" />
+      <workItem from="1572150995040" duration="9781000" />
+      <workItem from="1572161539327" duration="14944000" />
     </task>
     <servers />
   </component>

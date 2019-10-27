@@ -15,6 +15,15 @@ class Letter extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('exp_time');
+    }
+
+    public function isAllow()
+    {
+        $user = auth()->user()->id;
+        if ($this->user_id == $user) {
+            return true;
+        } else
+            return false;
     }
 }

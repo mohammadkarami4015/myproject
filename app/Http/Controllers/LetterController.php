@@ -6,6 +6,7 @@ use App\Letter;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\EventListener\DisallowRobotsIndexingListener;
 
 class LetterController extends Controller
 {
@@ -16,8 +17,34 @@ class LetterController extends Controller
      */
     public function index()
     {
-        $letters = Letter::latest()->paginate(20);
+        $user = auth()->user()->id;
+        $letters = Letter::whereUser_id($user)->latest()->paginate(20);
         return view('letter.index', compact('letters'));
+    }
+
+    public function childLetter()
+    {
+        $user = auth()->user()->childs()->get('id')->toArray();
+        $letters = Letter::whereUser_id($user)->latest()->paginate(20);
+        return view('letter.index', compact('letters'));
+    }
+
+    public function accessLetter()
+    {
+        $user = auth()->user();
+        $lettersUser = $user->letters;
+        $filtered = $lettersUser->filter(function ($value) {
+            return $value->pivot->exp_time == null;
+        });
+
+        return $filtered;
+//        foreach ($lettersUser as $item){
+//            if($item->pivot->exp_time < Carbon::now())
+//             dd($item);
+//        }
+//        $exp_times = $lettersUser->map->pivot;
+//        return $exp_times;
+
     }
 
     /**
@@ -27,7 +54,8 @@ class LetterController extends Controller
      */
     public function create()
     {
-        $users = User::all();
+        $user = auth()->user();
+        $users = $user->childs;
         return view('letter.create', compact('users'));
     }
 
@@ -50,13 +78,15 @@ class LetterController extends Controller
                 'details' => $request->details,
                 'user_id' => auth()->user()->id
             ]);
+
             if ($request->has('user_id')) {
                 foreach ($request->user_id as $userId) {
-                    $letter->users()->attach($userId, ['exp_time' => Carbon::parse("+" . $request->exp_time[$userId] . " hour")]);
+                    if ($request->exp_time[$userId] != null)
+                        $letter->users()->attach($userId, ['exp_time' => Carbon::parse("+" . $request->exp_time[$userId] . " hour")]);
+                    else
+                        $letter->users()->attach($userId);
                 }
-//                for ($i = 0; $i < count($request->user_id); $i++) {
-//                    $letter->users()->attach($request->user_id[$i], ['exp_time' => Carbon::parse("+" . $request->exp_time[$i] . " hours")]);
-//                }
+//
             }
             $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت اضافه شد!...');
             return back();
@@ -82,8 +112,12 @@ class LetterController extends Controller
      */
     public function edit(Letter $letter)
     {
-        $users = User::all();
-        return view('letter.edit', compact('letter', 'users'));
+
+        if ($letter->isAllow()) {
+            $users = User::all();
+            return view('letter.edit', compact('letter', 'users'));
+        } else
+            return back()->withErrors('شما اجازه این عملیات را ندارید');
     }
 
     /**
@@ -100,12 +134,23 @@ class LetterController extends Controller
             'title' => 'required|max:30',
             'details' => 'required|min:10',
         ]);
-        if (auth()->check()) {
+
+        if ($letter->isAllow()) {
             $letter->update([
                 'title' => $request->title,
                 'details' => $request->details
             ]);
-            $letter->users()->sync($request->input('user_id'));
+
+            $letter->users()->detach();
+
+            if ($request->has('user_id')) {
+                foreach ($request->user_id as $userId) {
+                    if ($request->exp_time[$userId] != null)
+                        $letter->users()->attach($userId, ['exp_time' => Carbon::parse("+" . $request->exp_time[$userId] . " hour")]);
+                    else
+                        $letter->users()->attach($userId);
+                }
+            }
             $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت ویرایش شد!...');
             return back();
         }
@@ -120,9 +165,12 @@ class LetterController extends Controller
      */
     public function destroy(Request $request, Letter $letter)
     {
-        $letter->delete();
-        $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت حذف شد!...');
-        return back();
+        if ($letter->isAllow()) {
+            $letter->delete();
+            $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت حذف شد!...');
+            return back();
+        } else
+            return back()->withErrors('شما اجازه این عملیات را ندارید');
 
     }
 }

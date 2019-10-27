@@ -20,3 +20,7 @@ Auth::routes();
 Route::resource('/user','UserController');
 Route::resource('/role','RoleController');
 Route::resource('/letter','LetterController');
+Route::get('/letters/child','LetterController@childLetter')->name('letter.child');
+Route::get('/letters/access','LetterController@accessLetter')->name('letter.access');
+
+

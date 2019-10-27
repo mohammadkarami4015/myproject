@@ -154,6 +154,12 @@
         </section>
 
 
+
+
+
+
+
+
         <ul class="sidebar-menu tree" data-widget="tree">
             <li class="header">منو</li>
             <li class="active">
@@ -168,12 +174,21 @@
                 </a>
 
             </li>
-            <li class="active">
-                <a href="{{route('letter.index')}}">
-                    <span>مدیریت نامه ها</span>
-                </a>
 
+            <li class="active treeview menu-open">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>مدیریت نامه ها</span>
+                    <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu" style="">
+                    <li class="active"><a href="{{route('letter.index')}}"><i class="fa fa-circle-o"></i> نامه های من</a></li>
+                    <li class="active"><a href="{{route('letter.child')}}"><i class="fa fa-circle-o"></i> نامه های زیر مجموعه</a></li>
+                    <li><a href="{{route('letter.access')}}"><i class="fa fa-circle-o"></i>سایر نامه ها</a></li>
+                </ul>
             </li>
+
 
         </ul>
 
@@ -183,6 +198,8 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+    @include('partials.error')
+    @include('partials.flash')
         <!-- Content Header (Page header) -->
         <section class="content-header">
 
@@ -193,10 +210,8 @@
         <section class="content">
 
             <!-- Default box -->
-  @yield('content')
+          @yield('content')
             <!-- /.box -->
-            @include('partials.error')
-            @include('partials.flash')
 
         </section>
         <!-- /.content -->

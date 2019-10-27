@@ -25,13 +25,14 @@
                         <div class="form-group">
                             <label> قابل نمایش برای</label>
                             @foreach($users as $user)
-                                <div class="checkbox">
+                                <div class="checkbox"  style="border-style: ridge">
                                     <label>
                                         <input name="user_id[]" value="{{$user->id}}" type="checkbox">
                                         {{$user->name}}
                                         <br>
                                         <label>  به مدت  </label>
                                         <select class="form-control" name="exp_time[{{$user->id}}]" id="">
+                                            <option value="">نامحدود</option>
                                             <option value="1">یک ساعت</option>
                                             <option value="5">پنج ساعت</option>
                                             <option value="24">یک روز</option>

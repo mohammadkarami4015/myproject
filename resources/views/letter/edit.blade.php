@@ -29,6 +29,15 @@
                                     <label>
                                         <input {{in_array(($user->id),$letter->users->pluck('id')->toArray()) ? 'checked' : ''}} name="user_id[]" value="{{$user->id}}" type="checkbox">
                                         {{$user->name}}
+                                        <br>
+                                        <label>  به مدت  </label>
+                                        <select class="form-control" name="exp_time[{{$user->id}}]" id="">
+                                            <option value="">نامحدود</option>
+                                            <option value="1">یک ساعت</option>
+                                            <option value="5">پنج ساعت</option>
+                                            <option value="24">یک روز</option>
+                                        </select>
+
                                     </label>
                                 </div>
                             @endforeach
