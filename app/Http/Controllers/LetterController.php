@@ -24,20 +24,25 @@ class LetterController extends Controller
 
     public function childLetter()
     {
-        $user = auth()->user()->childs()->get('id')->toArray();
-        $letters = Letter::whereUser_id($user)->latest()->paginate(20);
-        return view('letter.index', compact('letters'));
+      if($user = auth()->user()->childs()->get('id')->toArray()) {
+          $letters = Letter::whereUser_id($user)->latest()->paginate(20);
+      }
+      else
+          $letters =collect();
+          return view('letter.index', compact('letters'));
+
     }
 
     public function accessLetter()
     {
         $user = auth()->user();
         $lettersUser = $user->letters;
-        $filtered = $lettersUser->filter(function ($value) {
-            return $value->pivot->exp_time == null;
+        $letters = $lettersUser->filter(function ($value) {
+            return $value->pivot->exp_time >= Carbon::now() || $value->pivot->exp_time == null;
         });
 
-        return $filtered;
+        return view('letter.index', compact('letters'));
+
 //        foreach ($lettersUser as $item){
 //            if($item->pivot->exp_time < Carbon::now())
 //             dd($item);

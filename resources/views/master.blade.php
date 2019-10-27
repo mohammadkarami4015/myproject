@@ -105,12 +105,18 @@
                                 <div class="pull-right">
                                     <a href="#" class="btn btn-default btn-flat">پروفایل</a>
                                 </div>
-                                <div class="pull-left">
-                                    <form id="logout-form" action="{{ route('logout') }}" method="post" >
-                                        @csrf
-                                        <button type="submit" class="btn btn-default btn-flat">خروج</button>
-                                    </form>
-                                </div>
+                                @if(auth()->check())
+                                    <div class="pull-left">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="post" >
+                                            @csrf
+                                            <button type="submit" class="btn btn-default btn-flat">خروج</button>
+                                        </form>
+                                    </div>
+                                @else
+                                    <div class="pull-left">
+                                        <a href="{{route('login')}}">  <button  class="btn btn-default btn-flat">ورود</button></a>
+                                    </div>
+                                 @endif
                             </li>
                         </ul>
                     </li>
