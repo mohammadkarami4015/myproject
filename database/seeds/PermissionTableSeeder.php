@@ -20,6 +20,43 @@ class PermissionTableSeeder extends Seeder
             ]
             , [
             'title' => 'manageLetter',
-            ]]);
+            ]
+            ,
+            [
+                'title' => 'addUser',
+            ]
+            ,
+            [
+                'title' => 'deleteUser',
+            ]
+            ,
+            [
+                'title' => 'editUser',
+            ]
+            ,
+            [
+                'title' => 'addRole',
+            ]
+            ,
+            [
+                'title' => 'deleteRole',
+            ]
+            ,
+            [
+                'title' => 'editRole',
+            ]
+            ,
+            [
+                'title' => 'addLetter',
+            ]
+            ,
+
+            [
+                'title' => 'deleteLetter',
+            ],
+            [
+                'title' => 'editLetter',
+            ]
+        ]);
     }
 }

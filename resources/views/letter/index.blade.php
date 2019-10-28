@@ -1,11 +1,13 @@
 @extends('master')
 
+@section('menu')
+    @include('menu')
+@stop
+
 @section('content')
- <tr>
-     <td>
-         <a href="{{route('letter.create')}}"><button  style="margin-right: 90%;" type="button" class="btn btn-success">افزودن نامه</button></a>
-     </td>
- </tr>
+
+    <a href="{{route('letter.create')}}"><button  type="button" class="btn btn-success">افزودن نامه</button></a>
+
     <div class="box-body table-responsive no-padding">
         <table class="table table-hover">
             <tbody><tr>

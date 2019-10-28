@@ -43,13 +43,6 @@ class LetterController extends Controller
 
         return view('letter.index', compact('letters'));
 
-//        foreach ($lettersUser as $item){
-//            if($item->pivot->exp_time < Carbon::now())
-//             dd($item);
-//        }
-//        $exp_times = $lettersUser->map->pivot;
-//        return $exp_times;
-
     }
 
     /**
@@ -119,7 +112,8 @@ class LetterController extends Controller
     {
 
         if ($letter->isAllow()) {
-            $users = User::all();
+            $user = auth()->user();
+            $users = $user->childs;
             return view('letter.edit', compact('letter', 'users'));
         } else
             return back()->withErrors('شما اجازه این عملیات را ندارید');

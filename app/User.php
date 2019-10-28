@@ -62,4 +62,16 @@ class User extends Authenticatable
         return $this->belongsTo(User::class,'parent_id');
 
     }
+
+    public function hasPermission($permission)
+    {
+
+        if ($this->roles->map->permissions->flatten()->pluck('title')->contains($permission)) {
+            return true;
+        }
+
+
+        return false;
+    }
+
 }

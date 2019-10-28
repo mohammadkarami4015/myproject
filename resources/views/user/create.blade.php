@@ -1,7 +1,8 @@
 @extends('master')
-@section('menu')
 
-@endsection
+@section('menu')
+    @include('menu')
+@stop
 
 @section('content')
     <div class="box box-primary">
@@ -17,7 +18,7 @@
                     <label for="exampleInputEmail1">زیر مجموعه</label>
                     <select  type="text" class="form-control " name="parent_id" >
                         {{$users = \App\User::all()}}
-                        <option value="">خالی</option>
+                        <option value="">اصلی</option>
                         @foreach($users as $user)
                             <option value="{{$user->id}}">{{$user->name}}</option>
                         @endforeach
@@ -35,6 +36,22 @@
                 <div class="col-md-8">
                     <label for="exampleInputPassword1">تکرار رمز عبور</label>
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label>انتخاب نقش</label>
+                        @foreach($roles as $role)
+                            <div class="checkbox">
+                                <label>
+                                    <input name="role_id[]" value="{{$role->id}}" type="checkbox">
+                                    {{$role->title}}
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
             <!-- /.box-body -->

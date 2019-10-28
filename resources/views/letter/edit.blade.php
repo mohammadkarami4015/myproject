@@ -1,7 +1,8 @@
 @extends('master')
 @section('menu')
+    @include('menu')
+@stop
 
-@endsection
 
 @section('content')
     <div class="box box-primary">
@@ -20,9 +21,9 @@
                 </div>
 
                 <hr>
-                <div class="col-md-8">
+                <div class="col-md-5">
                     <div class="form-group">
-                        <div class="form-group">
+
                             <label> قابل نمایش برای</label>
                             @foreach($users as $user)
                                 <div class="checkbox">
@@ -42,7 +43,7 @@
                                 </div>
                             @endforeach
                         </div>
-                    </div>
+
                 </div>
             </div>
             <!-- /.box-body -->

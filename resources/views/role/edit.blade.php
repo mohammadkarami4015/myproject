@@ -1,7 +1,8 @@
 @extends('master')
-@section('menu')
 
-@endsection
+@section('menu')
+    @include('menu')
+@stop
 
 @section('content')
     <div class="box box-primary">

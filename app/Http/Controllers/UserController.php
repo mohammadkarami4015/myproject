@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $roles = Role::all();
+        return view('user.create',compact('roles'));
     }
 
     /**
@@ -37,12 +39,16 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        User::create([
+
+        $user = User::create([
             'name'=>$request->name,
             'parent_id'=>$request->parent_id,
             'email'=>$request->email,
             'password'=>bcrypt($request->password),
         ]);
+        if ($request->has('role_id'))
+            $user->roles()->sync($request->input('role_id'));
+
         $request->session()->flash('flash_message', 'کاربر جدید با موفقیت ثبت شد');
         return back();
     }
@@ -66,7 +72,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('user.edit',compact('user'));
+        $roles = Role::all();
+        return view('user.edit',compact('user','roles'));
     }
 
     /**
@@ -78,12 +85,21 @@ class UserController extends Controller
      */
     public function update(UserRequest $request,User $user)
     {
+        dd($user);
         $user->update([
            'name'=>$request->name,
            'parent_id'=>$request->parent_id,
            'email'=>$request->email,
            'password'=>bcrypt($request->password),
         ]);
+
+        $request->session()->flash('flash_message', 'ویرایش کاربر با موفقیت انجام شد');
+        return back();
+
+    }
+    public function updateRole(Request $request,User $user)
+    {
+        $user->roles()->sync($request->input('role_id'));
 
         $request->session()->flash('flash_message', 'ویرایش کاربر با موفقیت انجام شد');
         return back();

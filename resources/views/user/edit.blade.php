@@ -1,10 +1,12 @@
 @extends('master')
-@section('menu')
 
-@endsection
+@section('menu')
+    @include('menu')
+@stop
 
 @section('content')
     <div class="box box-primary">
+        <a href="{{route('user.index')}}"><button type="button" style="margin-right: 93%; margin-top: 1%" class="btn btn-success">بازگشت </button></a>
         <form role="form" method="post" action="{{route('user.update',['id'=>$user->id])}}">
             {{csrf_field()}}
             {{method_field('patch')}}
@@ -39,13 +41,41 @@
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                 </div>
             </div>
+
             <!-- /.box-body -->
 
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary">ارسال</button>
-                <a href="{{route('user.index')}}"><button   type="button" class="btn btn-success">بازگشت </button></a>
+                <button type="submit" class="btn btn-primary">ویرایش</button>
             </div>
         </form>
+    </div>
+    <div class="box box-primary">
+        <div class="box-body">
+             <div class="col-md-12">
+                 <div class="form-group">
+            <form role="form" method="post" action="{{route('user.updateRole',['id'=>$user->id])}}">
+                {{csrf_field()}}
+                {{method_field('patch')}}
+                <div class="form-group">
+                    <label>انتخاب نقش</label>
+                    @foreach($roles as $role)
+                        <div class="checkbox">
+                            <label>
+                                <input {{in_array(($role->id),$user->roles->pluck('id')->toArray()) ? 'checked' : ''}} name="role_id[]" value="{{$role->id}}" type="checkbox">
+                                {{$role->title}}
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">ویرایش</button>
+
+                </div>
+            </form>
+        </div>
+            </div>
+        </div>
     </div>
 
 
