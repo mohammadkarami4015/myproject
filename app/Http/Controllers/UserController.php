@@ -9,6 +9,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:manageUser', ['only' => ['index']]);
+        $this->middleware('permission:addUser', ['only' => ['create','store']]);
+        $this->middleware('permission:deleteUser', ['only' => ['destroy']]);
+        $this->middleware('permission:editUser', ['only' => ['edit','update','updateRole']]);
+
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +27,18 @@ class UserController extends Controller
      */
     public function index()
     {
+//        $this->middleware('permission:manageUser');
         $users = User::latest()->paginate(20);
         return view('user.index',compact('users'));
+    }
+
+    public function childUser()
+    {
+        $this->middleware('permission');
+        $user = auth()->user()->id;
+        $users = User::whereParent_id($user)->latest()->paginate(20);
+        return view('user.index',compact('users'));
+
     }
 
     /**
@@ -45,6 +66,7 @@ class UserController extends Controller
             'parent_id'=>$request->parent_id,
             'email'=>$request->email,
             'password'=>bcrypt($request->password),
+            'code'=>makeCode($request->parent_id),
         ]);
         if ($request->has('role_id'))
             $user->roles()->sync($request->input('role_id'));
@@ -91,6 +113,7 @@ class UserController extends Controller
            'parent_id'=>$request->parent_id,
            'email'=>$request->email,
            'password'=>bcrypt($request->password),
+            'code'=>makeCode($request->parent_id),
         ]);
 
         $request->session()->flash('flash_message', 'ویرایش کاربر با موفقیت انجام شد');

@@ -10,26 +10,42 @@ use Symfony\Component\HttpKernel\EventListener\DisallowRobotsIndexingListener;
 
 class LetterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:manageLetter', ['only' => ['index']]);
+        $this->middleware('permission:addLetter', ['only' => ['create', 'store']]);
+
+
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
+        $letters = Letter::latest()->paginate(10);
+        return view('letter.index', compact('letters'));
+    }
+
+
+    public function myIndex()
+    {
         $user = auth()->user()->id;
-        $letters = Letter::whereUser_id($user)->latest()->paginate(20);
+        $letters = Letter::whereUser_id($user)->latest()->paginate(10);
         return view('letter.index', compact('letters'));
     }
 
     public function childLetter()
     {
-      if($user = auth()->user()->childs()->get('id')->toArray()) {
-          $letters = Letter::whereUser_id($user)->latest()->paginate(20);
-      }
-      else
-          $letters =collect();
-          return view('letter.index', compact('letters'));
+        if ($user = auth()->user()->childs()->get('id')->toArray()) {
+            $letters = Letter::whereUser_id($user)->latest()->paginate(10);
+        } else
+            $letters = collect();
+        return view('letter.index', compact('letters'));
 
     }
 
@@ -40,7 +56,6 @@ class LetterController extends Controller
         $letters = $lettersUser->filter(function ($value) {
             return $value->pivot->exp_time >= Carbon::now() || $value->pivot->exp_time == null;
         });
-
         return view('letter.index', compact('letters'));
 
     }
@@ -164,12 +179,10 @@ class LetterController extends Controller
      */
     public function destroy(Request $request, Letter $letter)
     {
-        if ($letter->isAllow()) {
-            $letter->delete();
-            $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت حذف شد!...');
-            return back();
-        } else
-            return back()->withErrors('شما اجازه این عملیات را ندارید');
+
+        $letter->delete();
+        $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت حذف شد!...');
+        return back();
 
     }
 }

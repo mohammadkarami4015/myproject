@@ -22,7 +22,9 @@ Route::middleware('auth')-> group(function (){
     Route::resource('/role','RoleController');
     Route::resource('/letter','LetterController');
     Route::patch('/users/updateRole/{user}','UserController@updateRole')->name('user.updateRole');
+    Route::get('/users/child','UserController@childUser')->name('user.child');
     Route::get('/letters/child','LetterController@childLetter')->name('letter.child');
+    Route::get('/letters/myIndex','LetterController@myIndex')->name('letter.myIndex');
     Route::get('/letters/access','LetterController@accessLetter')->name('letter.access');
 });
 
