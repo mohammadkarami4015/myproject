@@ -31,8 +31,27 @@
                             @foreach($users as $user)
                                 <div class="checkbox"  style="border-style: ridge">
                                     <label>
+
                                         <input name="user_id[]" value="{{$user->id}}" type="checkbox">
                                         {{$user->name}}
+                                        @if(($diff = strlen($user->code) - strlen(auth()->user()->code))==4 )
+                                            <p style="margin-right: 500px;">(زیر مجموعه سطح اول)</p>
+                                        @endif
+                                        @if($diff==8)
+                                            <p style="margin-right: 500px;">(زیر مجموعه سطح دوم)</p>
+                                        @endif
+                                        @if($diff==12)
+                                            <p style="margin-right: 500px;">(زیر مجموعه سطح سوم)</p>
+                                        @endif
+                                        @if($diff==16)
+                                            <p style="margin-right: 500px;">(زیر مجموعه سطح چهارم)</p>
+                                        @endif
+                                        @if($diff==20)
+                                            <p style="margin-right: 500px;">(زیر مجموعه سطح پنجم)</p>
+                                        @endif
+                                        @if($diff==24)
+                                            <p style="margin-right: 500px;">(زیر مجموعه سطح ششم)</p>
+                                        @endif
                                         <br>
                                         <label>  به مدت  </label>
                                         <select class="form-control" name="exp_time[{{$user->id}}]" id="">

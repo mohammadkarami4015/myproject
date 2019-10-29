@@ -8,7 +8,6 @@
 @stop
 
 @section('content')
-
     <a href="{{route('user.create')}}"><button type="button" class="btn btn-success">افزودن کاربر</button></a>
 
     <div class="box-body table-responsive no-padding">
@@ -16,6 +15,7 @@
             <tbody><tr>
                 <th>کاربر</th>
                 <th>email</th>
+                <th>سطح</th>
                 <th>زیرمجموعه</th>
                 <th>نقش</th>
                 <th>تنظیمات</th>
@@ -24,6 +24,26 @@
                 <tr>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
+                    <td>
+                        @if(($diff = strlen($user->code) - strlen(auth()->user()->code))==4 )
+                            <p >اول </p>
+                        @endif
+                        @if($diff==8)
+                            <p >دوم</p>
+                        @endif
+                        @if($diff==12)
+                            <p >سوم</p>
+                        @endif
+                        @if($diff==16)
+                            <p >چهارم</p>
+                        @endif
+                        @if($diff==20)
+                            <p >پنجم</p>
+                        @endif
+                        @if($diff==24)
+                            <p >ششم</p>
+                        @endif
+                    </td>
                     <td>{{$user->parent['name']}}</td>
                     <td>
                         @foreach($user->roles as $role)
