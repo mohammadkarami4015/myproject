@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Letter::class, function (Faker $faker) {
     return [
-        //
+
     ];
 });

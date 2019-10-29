@@ -13,13 +13,14 @@ class PermissionTableSeeder extends Seeder
     {
         \DB::table('permissions')->insert([
             [
-                'title' => 'manageRole',
+                'title' => 'allRole',
             ],
             [
-                'title' => 'manageUser',
+                'title' => 'allUser',
             ]
-            , [
-            'title' => 'manageLetter',
+            ,
+            [
+                'title' => 'allLetter',
             ]
             ,
             [
@@ -50,7 +51,6 @@ class PermissionTableSeeder extends Seeder
                 'title' => 'addLetter',
             ]
             ,
-
             [
                 'title' => 'deleteLetter',
             ],
@@ -58,5 +58,14 @@ class PermissionTableSeeder extends Seeder
                 'title' => 'editLetter',
             ]
         ]);
+      ($permissions = \App\Permission::all());
+
+        $role = factory(\App\Role::class)->create();
+
+        $role->permissions()->sync($permissions);
+
+        $user = factory(\App\User::class)->create();
+
+        $user->roles()->sync($role->id);
     }
 }

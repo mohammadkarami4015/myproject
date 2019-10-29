@@ -12,7 +12,7 @@ class LetterController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:manageLetter', ['only' => ['index']]);
+        $this->middleware('permission:allLetter', ['only' => ['index']]);
         $this->middleware('permission:addLetter', ['only' => ['create', 'store']]);
 
     }
