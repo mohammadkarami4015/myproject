@@ -1,5 +1,7 @@
 @extends('master')
-
+@section('title')
+    <title>ویرایش کاربر</title>
+@endsection
 @section('menu')
     @include('menu')
 @stop

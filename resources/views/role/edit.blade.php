@@ -1,4 +1,7 @@
 @extends('master')
+@section('title')
+    <title>ویرایش نقش</title>
+@endsection
 
 @section('menu')
     @include('menu')

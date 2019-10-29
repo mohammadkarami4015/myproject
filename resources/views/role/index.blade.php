@@ -1,4 +1,7 @@
 @extends('master')
+@section('title')
+    <title>نقش ها</title>
+@endsection
 @section('menu')
     @include('menu')
 @stop

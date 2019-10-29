@@ -1,4 +1,7 @@
 @extends('master')
+@section('title')
+    <title>لیست کاربران</title>
+@endsection
 
 @section('menu')
     @include('menu')

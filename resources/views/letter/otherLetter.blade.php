@@ -1,4 +1,7 @@
 @extends('master')
+@section('title')
+    <title>سایر نامه ها</title>
+@endsection
 
 @section('menu')
     @include('menu')

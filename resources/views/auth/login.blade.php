@@ -1,4 +1,7 @@
 @extends('master')
+@section('title')
+    <title>صفحع ورود</title>
+@endsection
 
 @section('content')
 
