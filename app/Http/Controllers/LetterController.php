@@ -15,7 +15,6 @@ class LetterController extends Controller
         $this->middleware('permission:manageLetter', ['only' => ['index']]);
         $this->middleware('permission:addLetter', ['only' => ['create', 'store']]);
 
-
     }
 
     /**
@@ -27,7 +26,7 @@ class LetterController extends Controller
 
     public function index()
     {
-        $letters = Letter::latest()->paginate(10);
+        $letters = Letter::latest()->get();
         return view('letter.index', compact('letters'));
     }
 
@@ -41,12 +40,19 @@ class LetterController extends Controller
 
     public function childLetter()
     {
-        if ($user = auth()->user()->childs()->get('id')->toArray()) {
-            $letters = Letter::whereUser_id($user)->latest()->paginate(10);
-        } else
+        if ($letter = Letter::whereIn('user_id', $this->getChilds())->get())
+            $letters = $letter;
+        else
             $letters = collect();
-        return view('letter.index', compact('letters'));
 
+        return view('letter.index', compact('letters'));
+    }
+
+    public function getChilds()
+    {
+        $user = auth()->user()->code;
+        $users = User::where([['code', 'like', $user . '%'], ['code', '!=', $user]])->get();
+        return $users;
     }
 
     public function accessLetter()
@@ -56,7 +62,7 @@ class LetterController extends Controller
         $letters = $lettersUser->filter(function ($value) {
             return $value->pivot->exp_time >= Carbon::now() || $value->pivot->exp_time == null;
         });
-        return view('letter.index', compact('letters'));
+        return view('letter.otherLetter', compact('letters'));
 
     }
 
@@ -67,8 +73,7 @@ class LetterController extends Controller
      */
     public function create()
     {
-        $user = auth()->user();
-        $users = $user->childs;
+        $users = $this->getChilds();
         return view('letter.create', compact('users'));
     }
 
@@ -99,7 +104,7 @@ class LetterController extends Controller
                     else
                         $letter->users()->attach($userId);
                 }
-//
+
             }
             $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت اضافه شد!...');
             return back();
@@ -127,8 +132,8 @@ class LetterController extends Controller
     {
 
         if ($letter->isAllow()) {
-            $user = auth()->user();
-            $users = $user->childs;
+
+            $users = $this->getChilds();
             return view('letter.edit', compact('letter', 'users'));
         } else
             return back()->withErrors('شما اجازه این عملیات را ندارید');

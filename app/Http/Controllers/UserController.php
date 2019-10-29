@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Role;
+use App\Traits\Coding;
 use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    use Coding;
 
     public function __construct()
     {
@@ -16,7 +18,6 @@ class UserController extends Controller
         $this->middleware('permission:addUser', ['only' => ['create','store']]);
         $this->middleware('permission:deleteUser', ['only' => ['destroy']]);
         $this->middleware('permission:editUser', ['only' => ['edit','update','updateRole']]);
-
     }
 
 
@@ -27,16 +28,14 @@ class UserController extends Controller
      */
     public function index()
     {
-//        $this->middleware('permission:manageUser');
         $users = User::latest()->paginate(20);
         return view('user.index',compact('users'));
     }
 
     public function childUser()
     {
-        $this->middleware('permission');
-        $user = auth()->user()->id;
-        $users = User::whereParent_id($user)->latest()->paginate(20);
+       $user = auth()->user()->code;
+        $users = User::where([['code','like',$user.'%'],['code','!=',$user]])->latest()->paginate(20);
         return view('user.index',compact('users'));
 
     }
@@ -66,7 +65,7 @@ class UserController extends Controller
             'parent_id'=>$request->parent_id,
             'email'=>$request->email,
             'password'=>bcrypt($request->password),
-            'code'=>makeCode($request->parent_id),
+            'code'=>$this->makeCode($request->parent_id),
         ]);
         if ($request->has('role_id'))
             $user->roles()->sync($request->input('role_id'));
@@ -107,13 +106,12 @@ class UserController extends Controller
      */
     public function update(UserRequest $request,User $user)
     {
-        dd($user);
         $user->update([
            'name'=>$request->name,
            'parent_id'=>$request->parent_id,
            'email'=>$request->email,
            'password'=>bcrypt($request->password),
-            'code'=>makeCode($request->parent_id),
+            'code'=>$this->makeCode($request->parent_id),
         ]);
 
         $request->session()->flash('flash_message', 'ویرایش کاربر با موفقیت انجام شد');
