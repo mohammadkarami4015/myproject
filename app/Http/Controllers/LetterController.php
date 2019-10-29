@@ -40,7 +40,9 @@ class LetterController extends Controller
 
     public function childLetter()
     {
-        if ($letter = Letter::whereIn('user_id', $this->getChilds())->get())
+        $user = auth()->user()->code;
+        $users = User::where([['code', 'like', $user . '%'], ['code', '!=', $user]])->get('id');
+        if ($letter = Letter::whereIn('user_id',$users)->get())
             $letters = $letter;
         else
             $letters = collect();
