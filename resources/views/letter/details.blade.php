@@ -37,7 +37,7 @@
 
     <!-- /.box-footer -->
     <div class="box-footer">
-        <a href="{{route('letter.index')}}"><button type="button" class="btn btn-success">بازگشت </button></a>
+        <a href="{{URL::previous()}}"><button type="button" class="btn btn-success">بازگشت </button></a>
     </div>
     <!-- /.box-footer -->
 </div>

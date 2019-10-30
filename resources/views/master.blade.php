@@ -72,7 +72,6 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             @if(auth()->check())
                             <span class="hidden-xs">{{auth()->user()->name}}</span>
                             @endif
@@ -85,7 +84,9 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">پروفایل</a>
+                                    @if(auth()->check())
+                                        <a href="{{route('user.editProfile',['id'=>auth()->user()->id])}}" class="btn btn-default btn-flat">پروفایل</a>
+                                    @endif
                                 </div>
                                 @if(auth()->check())
                                     <div class="pull-left">
@@ -127,15 +128,7 @@
                 </div>
             </div>
             <!-- search form -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="جستجو">
-                    <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-                </div>
-            </form>
+
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
 

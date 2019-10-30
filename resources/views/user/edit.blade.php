@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="box box-primary">
-        <a href="{{route('user.index')}}"><button type="button" style="margin-right: 93%; margin-top: 1%" class="btn btn-success">بازگشت </button></a>
+        <a href="{{ URL::previous()}}"><button type="button" style="margin-right: 93%; margin-top: 1%" class="btn btn-success">بازگشت </button></a>
         <form role="form" method="post" action="{{route('user.update',['id'=>$user->id])}}">
             {{csrf_field()}}
             {{method_field('patch')}}

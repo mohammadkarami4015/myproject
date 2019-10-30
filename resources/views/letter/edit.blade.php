@@ -25,15 +25,28 @@
                 </div>
 
                 <hr>
-                <div class="col-md-5">
+                <div class="col-md-8">
                     <div class="form-group">
 
                             <label> قابل نمایش برای</label>
                             @foreach($users as $user)
-                                <div class="checkbox">
+                                <div class="checkbox"  style="border-style: ridge">
                                     <label>
                                         <input {{in_array(($user->id),$letter->users->pluck('id')->toArray()) ? 'checked' : ''}} name="user_id[]" value="{{$user->id}}" type="checkbox">
                                         {{$user->name}}
+                                        @if(($diff = strlen($user->code) - strlen(auth()->user()->code))==4 )
+                                            <p style="margin-right: 500px;">(زیر مجموعه سطح اول)</p>
+                                        @elseif($diff==8)
+                                            <p style="margin-right: 500px;">(زیر مجموعه سطح دوم)</p>
+                                        @elseif($diff==12)
+                                            <p style="margin-right: 500px;">(زیر مجموعه سطح سوم)</p>
+                                        @elseif($diff==16)
+                                            <p style="margin-right: 500px;">(زیر مجموعه سطح چهارم)</p>
+                                        @elseif($diff==20)
+                                            <p style="margin-right: 500px;">(زیر مجموعه سطح پنجم)</p>
+                                        @elseif($diff==24)
+                                            <p style="margin-right: 500px;">(زیر مجموعه سطح ششم)</p>
+                                        @endif
                                         <br>
                                         <label>  به مدت  </label>
                                         <select class="form-control" name="exp_time[{{$user->id}}]" id="">
@@ -54,7 +67,7 @@
 
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary">ویرایش</button>
-                <a href="{{route('letter.index')}}"><button   type="button" class="btn btn-success">بازگشت </button></a>
+                <a href="{{ URL::previous()}}"><button   type="button" class="btn btn-success">بازگشت </button></a>
             </div>
         </form>
     </div>

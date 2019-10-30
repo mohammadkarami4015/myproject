@@ -3,8 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="8df3e024-a298-43ba-b4cd-47287da5837c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/letter/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/letter/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/letter/details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/letter/details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/letter/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/letter/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/role/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/role/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/role/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/role/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,10 +151,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\MyProject\resources\views\user" />
       <recent name="C:\xampp\htdocs\MyProject\resources\views\letter" />
       <recent name="C:\xampp\htdocs\MyProject\app\Traits" />
       <recent name="C:\xampp\htdocs\MyProject\resources\views" />
-      <recent name="C:\xampp\htdocs\MyProject\resources\views\user" />
       <recent name="C:\xampp\htdocs\MyProject\public\css" />
     </key>
   </component>
@@ -185,7 +193,9 @@
       <workItem from="1572161539327" duration="17900000" />
       <workItem from="1572237458633" duration="2048000" />
       <workItem from="1572240077616" duration="23594000" />
-      <workItem from="1572324089697" duration="22860000" />
+      <workItem from="1572324089697" duration="23355000" />
+      <workItem from="1572411026922" duration="2378000" />
+      <workItem from="1572414673265" duration="3252000" />
     </task>
     <servers />
   </component>

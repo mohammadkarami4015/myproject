@@ -7,6 +7,7 @@ use App\Role;
 use App\Traits\Coding;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -137,5 +138,26 @@ class UserController extends Controller
     {
         $user->delete();
         return back();
+    }
+
+    public function editProfile(User $user)
+    {
+        return view('user.editProfile',compact('user'));
+    }
+
+    public function updateProfile(UserRequest $request,User $user)
+    {
+
+     $match =  Hash::check($request->old_password,$user->password);
+      if(!$match)
+           return back()->withErrors(' old password is invalid');
+
+       $user->update([
+           'name' =>$request->name,
+           'email' =>$request->email,
+           'password'=>bcrypt($request->password),
+       ]);
+        $request->session()->flash('flash_message', 'ویرایش پروفایل با موفقیت انجام شد');
+        return auth()->logout() ?: redirect('/');
     }
 }

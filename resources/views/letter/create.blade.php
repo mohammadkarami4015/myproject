@@ -36,20 +36,15 @@
                                         {{$user->name}}
                                         @if(($diff = strlen($user->code) - strlen(auth()->user()->code))==4 )
                                             <p style="margin-right: 500px;">(زیر مجموعه سطح اول)</p>
-                                        @endif
-                                        @if($diff==8)
+                                        @elseif($diff==8)
                                             <p style="margin-right: 500px;">(زیر مجموعه سطح دوم)</p>
-                                        @endif
-                                        @if($diff==12)
+                                        @elseif($diff==12)
                                             <p style="margin-right: 500px;">(زیر مجموعه سطح سوم)</p>
-                                        @endif
-                                        @if($diff==16)
+                                        @elseif($diff==16)
                                             <p style="margin-right: 500px;">(زیر مجموعه سطح چهارم)</p>
-                                        @endif
-                                        @if($diff==20)
+                                        @elseif($diff==20)
                                             <p style="margin-right: 500px;">(زیر مجموعه سطح پنجم)</p>
-                                        @endif
-                                        @if($diff==24)
+                                        @elseif($diff==24)
                                             <p style="margin-right: 500px;">(زیر مجموعه سطح ششم)</p>
                                         @endif
                                         <br>
@@ -74,7 +69,7 @@
 
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary">افزودن</button>
-                <a href="{{route('letter.index')}}"><button   type="button" class="btn btn-success">بازگشت </button></a>
+                <a href="{{ URL::previous()}}"><button   type="button" class="btn btn-success">بازگشت </button></a>
             </div>
         </form>
     </div>

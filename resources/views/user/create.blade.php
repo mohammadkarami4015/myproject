@@ -61,7 +61,7 @@
 
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary">ارسال</button>
-                <a href="{{route('user.index')}}"><button   type="button" class="btn btn-success">بازگشت </button></a>
+                <a href="{{ URL::previous()}}"><button   type="button" class="btn btn-success">بازگشت </button></a>
             </div>
         </form>
     </div>
