@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8df3e024-a298-43ba-b4cd-47287da5837c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php-test-framework.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/PermissionFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/PermissionFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +33,9 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="MyProject" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -164,13 +167,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.ExampleTest">
-    <configuration name="ExampleTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\ExampleTest" file="$PROJECT_DIR$/tests/Feature/ExampleTest.php" scope="Class" />
+  <component name="RunManager" selected="PHPUnit.UserTest.userUpdate_need_editUser_role">
+    <configuration name="UserTest.can_any_user_edit_another_user" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="can_any_user_edit_another_user" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="ExampleTest.testBasicTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\ExampleTest" file="$PROJECT_DIR$/tests/Feature/ExampleTest.php" method="testBasicTest" scope="Method" />
+    <configuration name="UserTest.can_update_user_with_any_role" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="can_update_user_with_any_role" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UserTest.can_update_user_without_role" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="can_update_user_without_role" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UserTest.editUser_form_need_editUser_roles" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="editUser_form_need_editUser_roles" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UserTest.userUpdate_need_editUser_role" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="userUpdate_need_editUser_role" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -179,8 +194,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.ExampleTest" />
-        <item itemvalue="PHPUnit.ExampleTest.testBasicTest" />
+        <item itemvalue="PHPUnit.UserTest.userUpdate_need_editUser_role" />
+        <item itemvalue="PHPUnit.UserTest.can_update_user_with_any_role" />
+        <item itemvalue="PHPUnit.UserTest.can_update_user_without_role" />
+        <item itemvalue="PHPUnit.UserTest.editUser_form_need_editUser_roles" />
+        <item itemvalue="PHPUnit.UserTest.can_any_user_edit_another_user" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +221,10 @@
       <workItem from="1572240077616" duration="23594000" />
       <workItem from="1572324089697" duration="23355000" />
       <workItem from="1572411026922" duration="2378000" />
-      <workItem from="1572414673265" duration="7021000" />
+      <workItem from="1572414673265" duration="9330000" />
+      <workItem from="1572440481575" duration="30000" />
+      <workItem from="1572445265428" duration="632000" />
+      <workItem from="1572496965583" duration="10961000" />
     </task>
     <servers />
   </component>

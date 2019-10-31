@@ -24,6 +24,7 @@ Route::middleware('auth')-> group(function (){
 
     Route::patch('/users/updateRole/{user}','UserController@updateRole')->name('user.updateRole');
     Route::get('/users/child','UserController@childUser')->name('user.child');
+
     Route::get('/users/editProfile/{user}','UserController@editProfile')->name('user.editProfile');
     Route::patch('/users/updateProfile/{user}','UserController@updateProfile')->name('user.updateProfile');
 

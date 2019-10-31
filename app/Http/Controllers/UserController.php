@@ -107,6 +107,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request,User $user)
     {
+
         $user->update([
            'name'=>$request->name,
            'parent_id'=>$request->parent_id,
