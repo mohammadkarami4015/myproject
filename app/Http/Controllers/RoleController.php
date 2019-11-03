@@ -11,7 +11,7 @@ class RoleController extends Controller
     public function __construct()
     {
         $this->middleware('permission:allRole');
-        $this->middleware('permission:addRole',['only' => ['create', 'store']]);
+        $this->middleware('permission:addRole',['only' => ['create','store']]);
         $this->middleware('permission:deleteRole',['only' => ['destroy']]);
         $this->middleware('permission:editRole',['only' => ['edit', 'update']]);
     }
@@ -69,6 +69,7 @@ class RoleController extends Controller
 
     public function destroy(Request $request, Role $role)
     {
+
         $role->delete();
         $request->session()->flash('flash_message', 'نقش مورد نطر با موفقیت حذف شد!...');
         return back();

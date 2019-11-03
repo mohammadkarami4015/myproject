@@ -14,7 +14,6 @@ class LetterController extends Controller
     {
         $this->middleware('permission:allLetter', ['only' => ['index']]);
         $this->middleware('permission:addLetter', ['only' => ['create', 'store']]);
-
     }
 
     /**
@@ -42,13 +41,16 @@ class LetterController extends Controller
     {
         $user = auth()->user()->code;
         $users = User::where([['code', 'like', $user . '%'], ['code', '!=', $user]])->get('id');
-        if ($letter = Letter::whereIn('user_id',$users)->get())
-            $letters = $letter;
-        else
-            $letters = collect();
 
+        if ($letter = Letter::whereIn('user_id', $users)->get()) {
+            $letters = $letter;
+
+        } else {
+            $letters = collect();
+        }
         return view('letter.index', compact('letters'));
     }
+
 
     public function getChilds()
     {
@@ -103,8 +105,10 @@ class LetterController extends Controller
                 foreach ($request->user_id as $userId) {
                     if ($request->exp_time[$userId] != null)
                         $letter->users()->attach($userId, ['exp_time' => Carbon::parse("+" . $request->exp_time[$userId] . " hour")]);
-                    else
+                    else {
                         $letter->users()->attach($userId);
+
+                    }
                 }
 
             }
@@ -132,9 +136,7 @@ class LetterController extends Controller
      */
     public function edit(Letter $letter)
     {
-
         if ($letter->isAllow()) {
-
             $users = $this->getChilds();
             return view('letter.edit', compact('letter', 'users'));
         } else
@@ -155,7 +157,6 @@ class LetterController extends Controller
             'title' => 'required|max:30',
             'details' => 'required|min:10',
         ]);
-
         if ($letter->isAllow()) {
             $letter->update([
                 'title' => $request->title,
@@ -172,7 +173,7 @@ class LetterController extends Controller
                         $letter->users()->attach($userId);
                 }
             }
-            $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت ویرایش شد!...');
+            $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت ویرایش شد.');
             return back();
         }
 
@@ -186,10 +187,9 @@ class LetterController extends Controller
      */
     public function destroy(Request $request, Letter $letter)
     {
-
         $letter->delete();
         $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت حذف شد!...');
         return back();
-
     }
+
 }

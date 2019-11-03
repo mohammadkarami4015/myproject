@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8df3e024-a298-43ba-b4cd-47287da5837c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/PermissionFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/PermissionFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LetterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LetterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/LetterFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/LetterFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,10 +22,15 @@
       <executable />
     </execution>
   </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints>
+      <file url="file://$PROJECT_DIR$/tests/Feature/LetterTest.php" />
+    </disable_hints>
+  </component>
   <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
+    <option name="SHOW_INTERMEDIATE" value="false" />
+    <option name="GROUP_DATA_SOURCES" value="false" />
+    <option name="GROUP_SCHEMA" value="false" />
     <option name="GROUP_CONTENTS" value="false" />
     <option name="SORT_POSITIONED" value="false" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
@@ -140,11 +147,12 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ToolWindowDatabase.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../New folder/divar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
+    <property name="settings.editor.selected.configurable" value="debugger.dataViews" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -167,25 +175,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.UserTest.userUpdate_need_editUser_role">
-    <configuration name="UserTest.can_any_user_edit_another_user" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="can_any_user_edit_another_user" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.LetterTest.can_user_see_expiredLetters">
+    <configuration name="LetterTest.can_user_see_accessLetters" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\LetterTest" file="$PROJECT_DIR$/tests/Feature/LetterTest.php" method="can_user_see_accessLetters" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.can_update_user_with_any_role" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="can_update_user_with_any_role" scope="Method" />
+    <configuration name="LetterTest.can_user_see_expiredLetters" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\LetterTest" file="$PROJECT_DIR$/tests/Feature/LetterTest.php" method="can_user_see_expiredLetters" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.can_update_user_without_role" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="can_update_user_without_role" scope="Method" />
+    <configuration name="RoleTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\RoleTest" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.editUser_form_need_editUser_roles" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="editUser_form_need_editUser_roles" scope="Method" />
+    <configuration name="RoleTest.required_field_for_userStore" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\RoleTest" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" method="required_field_for_userStore" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.userUpdate_need_editUser_role" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="userUpdate_need_editUser_role" scope="Method" />
+    <configuration name="RoleTest.roleStore_need_addRole_role" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\RoleTest" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" method="roleStore_need_addRole_role" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -194,11 +202,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.UserTest.userUpdate_need_editUser_role" />
-        <item itemvalue="PHPUnit.UserTest.can_update_user_with_any_role" />
-        <item itemvalue="PHPUnit.UserTest.can_update_user_without_role" />
-        <item itemvalue="PHPUnit.UserTest.editUser_form_need_editUser_roles" />
-        <item itemvalue="PHPUnit.UserTest.can_any_user_edit_another_user" />
+        <item itemvalue="PHPUnit.LetterTest.can_user_see_expiredLetters" />
+        <item itemvalue="PHPUnit.LetterTest.can_user_see_accessLetters" />
+        <item itemvalue="PHPUnit.RoleTest.required_field_for_userStore" />
+        <item itemvalue="PHPUnit.RoleTest" />
+        <item itemvalue="PHPUnit.RoleTest.roleStore_need_addRole_role" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +232,9 @@
       <workItem from="1572414673265" duration="9330000" />
       <workItem from="1572440481575" duration="30000" />
       <workItem from="1572445265428" duration="632000" />
-      <workItem from="1572496965583" duration="10961000" />
+      <workItem from="1572496965583" duration="11653000" />
+      <workItem from="1572670228727" duration="23396000" />
+      <workItem from="1572756732428" duration="12246000" />
     </task>
     <servers />
   </component>

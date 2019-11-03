@@ -22,6 +22,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => 'yyyy',
         'email' => $faker->email,
         'password' => bcrypt(123456789), // password
+        'parent_id'=>null,
         'code'=>'0001',
         'remember_token' => Str::random(10),
     ];

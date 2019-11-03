@@ -16,9 +16,9 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('permission:allUser', ['only' => ['index']]);
-        $this->middleware('permission:addUser', ['only' => ['create','store']]);
+        $this->middleware('permission:addUser', ['only' => ['create', 'store']]);
         $this->middleware('permission:deleteUser', ['only' => ['destroy']]);
-        $this->middleware('permission:editUser', ['only' => ['edit','update','updateRole']]);
+        $this->middleware('permission:editUser', ['only' => ['edit', 'update', 'updateRole']]);
     }
 
 
@@ -30,15 +30,14 @@ class UserController extends Controller
     public function index()
     {
         $users = User::latest()->paginate(20);
-        return view('user.index',compact('users'));
+        return view('user.index', compact('users'));
     }
 
     public function childUser()
     {
-       $user = auth()->user()->code;
-        $users = User::where([['code','like',$user.'%'],['code','!=',$user]])->latest()->paginate(20);
-        return view('user.index',compact('users'));
-
+        $user = auth()->user()->code;
+        $users = User::where([['code', 'like', $user . '%'], ['code', '!=', $user]])->latest()->paginate(20);
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -49,24 +48,24 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('user.create',compact('roles'));
+        return view('user.create', compact('roles'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(UserRequest $request)
     {
 
         $user = User::create([
-            'name'=>$request->name,
-            'parent_id'=>$request->parent_id,
-            'email'=>$request->email,
-            'password'=>bcrypt($request->password),
-            'code'=>$this->makeCode($request->parent_id),
+            'name' => $request->name,
+            'parent_id' => $request->parent_id,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'code' => $this->makeCode($request->parent_id),
         ]);
         if ($request->has('role_id'))
             $user->roles()->sync($request->input('role_id'));
@@ -78,7 +77,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -89,38 +88,39 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
     {
         $roles = Role::all();
-        return view('user.edit',compact('user','roles'));
+        return view('user.edit', compact('user', 'roles'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request,User $user)
+    public function update(UserRequest $request, User $user)
     {
 
         $user->update([
-           'name'=>$request->name,
-           'parent_id'=>$request->parent_id,
-           'email'=>$request->email,
-           'password'=>bcrypt($request->password),
-            'code'=>$this->makeCode($request->parent_id),
+            'name' => $request->name,
+            'parent_id' => $request->parent_id,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'code' => $this->makeCode($request->parent_id),
         ]);
 
         $request->session()->flash('flash_message', 'ویرایش کاربر با موفقیت انجام شد');
         return back();
 
     }
-    public function updateRole(Request $request,User $user)
+
+    public function updateRole(Request $request, User $user)
     {
         $user->roles()->sync($request->input('role_id'));
 
@@ -132,7 +132,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
@@ -143,21 +143,23 @@ class UserController extends Controller
 
     public function editProfile(User $user)
     {
-        return view('user.editProfile',compact('user'));
+        return view('user.editProfile', compact('user'));
     }
 
-    public function updateProfile(UserRequest $request,User $user)
+    public function updateProfile(UserRequest $request, User $user)
     {
+        $match = Hash::check($request->old_password, $user->password);
 
-     $match =  Hash::check($request->old_password,$user->password);
-      if(!$match)
-           return back()->withErrors(' old password is invalid');
+        if (!$match) {
+            $request->session()->flash('flash_message', 'رمز عبور را اشتباه وارد کرده اید');
+            return back();
+        }
 
-       $user->update([
-           'name' =>$request->name,
-           'email' =>$request->email,
-           'password'=>bcrypt($request->password),
-       ]);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
         $request->session()->flash('flash_message', 'ویرایش پروفایل با موفقیت انجام شد');
         return auth()->logout() ?: redirect('/');
     }
