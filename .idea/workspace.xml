@@ -4,11 +4,9 @@
     <list default="true" id="8df3e024-a298-43ba-b4cd-47287da5837c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LetterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LetterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/LetterFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/LetterFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Letter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Letter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/letter/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/letter/create.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -175,7 +173,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.LetterTest.can_user_see_expiredLetters">
+  <component name="RunManager" selected="PHPUnit.Feature">
+    <configuration name="Feature" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner directory="$PROJECT_DIR$/tests/Feature" />
+      <method v="2" />
+    </configuration>
     <configuration name="LetterTest.can_user_see_accessLetters" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\LetterTest" file="$PROJECT_DIR$/tests/Feature/LetterTest.php" method="can_user_see_accessLetters" scope="Method" />
       <method v="2" />
@@ -192,21 +194,17 @@
       <TestRunner class="Tests\Feature\RoleTest" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" method="required_field_for_userStore" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="RoleTest.roleStore_need_addRole_role" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\RoleTest" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" method="roleStore_need_addRole_role" scope="Method" />
-      <method v="2" />
-    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.Feature" />
         <item itemvalue="PHPUnit.LetterTest.can_user_see_expiredLetters" />
         <item itemvalue="PHPUnit.LetterTest.can_user_see_accessLetters" />
         <item itemvalue="PHPUnit.RoleTest.required_field_for_userStore" />
         <item itemvalue="PHPUnit.RoleTest" />
-        <item itemvalue="PHPUnit.RoleTest.roleStore_need_addRole_role" />
       </list>
     </recent_temporary>
   </component>
@@ -234,7 +232,23 @@
       <workItem from="1572445265428" duration="632000" />
       <workItem from="1572496965583" duration="11653000" />
       <workItem from="1572670228727" duration="23396000" />
-      <workItem from="1572756732428" duration="12246000" />
+      <workItem from="1572756732428" duration="13986000" />
+      <workItem from="1572845131366" duration="2282000" />
+      <workItem from="1572929186338" duration="2057000" />
+      <workItem from="1572940500833" duration="6000" />
+      <workItem from="1572953866634" duration="5245000" />
+      <workItem from="1573015203160" duration="3615000" />
+      <workItem from="1573101973742" duration="1932000" />
+      <workItem from="1573274998017" duration="2612000" />
+      <workItem from="1573386403511" duration="1915000" />
+      <workItem from="1573480665399" duration="1039000" />
+      <workItem from="1573554668906" duration="17000" />
+      <workItem from="1573556124418" duration="846000" />
+      <workItem from="1573620280847" duration="29000" />
+      <workItem from="1573626720172" duration="56000" />
+      <workItem from="1573890177125" duration="112000" />
+      <workItem from="1574054475767" duration="1664000" />
+      <workItem from="1574256998034" duration="2050000" />
     </task>
     <servers />
   </component>

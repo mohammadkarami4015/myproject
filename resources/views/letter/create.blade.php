@@ -48,11 +48,19 @@
                                             <p style="margin-right: 500px;">(زیر مجموعه سطح ششم)</p>
                                         @endif
                                         <br>
+                                        <label>  از ساعت  </label>
+                                        <select class="form-group" name="str_time[{{$user->id}}]" id="">
+                                           @foreach($time as $value)
+                                                <option value="{{$value}}">{{$value}}</option>
+                                               @endforeach
+                                        </select>
+                                        <br>
                                         <label>  به مدت  </label>
-                                        <select class="form-control" name="exp_time[{{$user->id}}]" id="">
+                                        <select class="form-group" name="exp_time[{{$user->id}}]" id="">
                                             <option value="">نامحدود</option>
                                             <option value="1">یک ساعت</option>
                                             <option value="5">پنج ساعت</option>
+                                            <option value="10">ده ساعت</option>
                                             <option value="24">یک روز</option>
                                         </select>
 

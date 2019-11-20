@@ -78,7 +78,8 @@ class LetterController extends Controller
     public function create()
     {
         $users = $this->getChilds();
-        return view('letter.create', compact('users'));
+        $time = Letter::time();
+        return view('letter.create', compact('users','time'));
     }
 
     /**
