@@ -44,7 +44,7 @@ class User extends Authenticatable
 
     public function letters()
     {
-        return $this->belongsToMany(Letter::class)->withPivot('exp_time');
+        return $this->belongsToMany(Letter::class)->withPivot(['created_at','exp_time']);
     }
 
     public function roles()

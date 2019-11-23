@@ -9,8 +9,11 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="/dist/css/bootstrap-theme.css">
+    <link href="/css/clockpicker.css" rel="stylesheet">
     <!-- Bootstrap rtl -->
     <link rel="stylesheet" href="/dist/css/rtl.css">
+    <link rel="stylesheet" href="/dist/css/persian-datepicker-0.4.5.min.css"/>
+    <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -190,10 +193,44 @@
 <script src="/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
+<script src="/js/clockpicker.js"></script>
+<script> $('.clockpicker').clockpicker(); </script>
 <script>
+
     $(document).ready(function () {
         $('.sidebar-menu').tree()
     })
 </script>
+
+<script src="/js/persian-date-0.1.8.min.js"></script>
+<script src="/js/persian-datepicker-0.4.5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.tarikh').persianDatepicker({
+            altField: '#tarikhAlt',
+            altFormat: 'X',
+            format: 'YYYY/MM/DD HH:mm',
+            observer: true,
+            timePicker: {
+                enabled: true
+            },
+        });
+    });
+
+    $(document).ready(function () {
+        $('#tarikhh').persianDatepicker({
+            altField: '#tarikhAlt',
+            altFormat: 'X',
+            format: 'D/MM/YYYY HH:mm',
+            observer: true,
+            timePicker: {
+                enabled: true
+            },
+        });
+    });
+
+
+</script>
+
 </body>
 </html>

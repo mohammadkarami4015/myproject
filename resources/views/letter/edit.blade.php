@@ -30,7 +30,7 @@
 
                             <label> قابل نمایش برای</label>
                             @foreach($users as $user)
-                                <div class="checkbox"  style="border-style: ridge">
+                                <div class="checkbox"  style="border-style: ridge;  height: 110px">
                                     <label>
                                         <input {{in_array(($user->id),$letter->users->pluck('id')->toArray()) ? 'checked' : ''}} name="user_id[]" value="{{$user->id}}" type="checkbox">
                                         {{$user->name}}
@@ -47,16 +47,22 @@
                                         @elseif($diff==24)
                                             <p style="margin-right: 500px;">(زیر مجموعه سطح ششم)</p>
                                         @endif
-                                        <br>
-                                        <label>  به مدت  </label>
-                                        <select class="form-control" name="exp_time[{{$user->id}}]" id="">
-                                            <option value="">نامحدود</option>
-                                            <option value="1">یک ساعت</option>
-                                            <option value="5">پنج ساعت</option>
-                                            <option value="24">یک روز</option>
-                                        </select>
-
                                     </label>
+                                        <br>
+                                        <label  style="position: absolute;margin-right: -400px; margin-top: -20px">start</label>
+                                        <div style="width: 200px" class="col-md-5">
+                                            <input type="text" readonly name="start_date[{{$user->id}}]"
+                                                   class="form-control pull-right tarikh"
+                                            >
+                                        </div>
+                                        <label  style="position: absolute;margin-right: -200px; margin-top: -20px">end</label>
+                                        <div style="width: 200px" class="col-md-5">
+                                            <input type="text" readonly name="expire_date[{{$user->id}}]"
+                                                   class="form-control pull-right tarikh"
+                                            >
+                                        </div>
+
+
                                 </div>
                             @endforeach
                         </div>

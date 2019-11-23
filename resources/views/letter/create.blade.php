@@ -11,6 +11,8 @@
     <div class="box box-primary">
         <form role="form" method="post" action="{{route('letter.store')}}">
             {{csrf_field()}}
+
+
             <div class="box-body">
                 <div class="col-md-8">
                     <label for="exampleInputEmail1">عنوان</label>
@@ -19,7 +21,8 @@
 
                 <div class="col-md-8">
                     <label for="exampleInputEmail1">متن نامه</label>
-                    <textarea type="name" rows="20" name="details" class="form-control" id="exampleInputEmail1" ></textarea>
+                    <textarea type="name" rows="20" name="details" class="form-control"
+                              id="exampleInputEmail1"></textarea>
                     <br>
                 </div>
 
@@ -29,7 +32,7 @@
                         <div class="form-group">
                             <label> قابل نمایش برای</label>
                             @foreach($users as $user)
-                                <div class="checkbox"  style="border-style: ridge">
+                                <div class="checkbox" style="border-style: ridge; height: 110px ">
                                     <label>
 
                                         <input name="user_id[]" value="{{$user->id}}" type="checkbox">
@@ -48,23 +51,20 @@
                                             <p style="margin-right: 500px;">(زیر مجموعه سطح ششم)</p>
                                         @endif
                                         <br>
-                                        <label>  از ساعت  </label>
-                                        <select class="form-group" name="str_time[{{$user->id}}]" id="">
-                                           @foreach($time as $value)
-                                                <option value="{{$value}}">{{$value}}</option>
-                                               @endforeach
-                                        </select>
-                                        <br>
-                                        <label>  به مدت  </label>
-                                        <select class="form-group" name="exp_time[{{$user->id}}]" id="">
-                                            <option value="">نامحدود</option>
-                                            <option value="1">یک ساعت</option>
-                                            <option value="5">پنج ساعت</option>
-                                            <option value="10">ده ساعت</option>
-                                            <option value="24">یک روز</option>
-                                        </select>
-
                                     </label>
+                                    <label  style="position: absolute;margin-right: -600px; margin-top: 50px">start</label>
+                                        <div style="width: 200px" class="col-md-5">
+                                            <input type="text" readonly name="start_date[{{$user->id}}]"
+                                                   class="form-control pull-right tarikh"
+                                            >
+                                        </div>
+                                    <label  style="position: absolute;margin-right: -390px; margin-top: 50px">end</label>
+                                        <div style="width: 200px" class="col-md-5">
+                                            <input type="text" readonly name="expire_date[{{$user->id}}]"
+                                                   class="form-control pull-right tarikh"
+                                            >
+                                        </div>
+
                                 </div>
                             @endforeach
                         </div>
@@ -77,10 +77,12 @@
 
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary">افزودن</button>
-                <a href="{{ URL::previous()}}"><button   type="button" class="btn btn-success">بازگشت </button></a>
+                <a href="{{ URL::previous()}}">
+                    <button type="button" class="btn btn-success">بازگشت</button>
+                </a>
             </div>
         </form>
     </div>
-
-
 @endsection
+
+
