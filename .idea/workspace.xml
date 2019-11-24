@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8df3e024-a298-43ba-b4cd-47287da5837c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LetterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LetterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Letter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Letter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/letter/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/letter/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/letter/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/letter/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/letter/otherLetter.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/letter/otherLetter.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_23_060648_create_letters_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_23_060648_create_letters_table.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -255,7 +251,7 @@
       <workItem from="1574311152701" duration="5432000" />
       <workItem from="1574318286545" duration="6537000" />
       <workItem from="1574484092784" duration="25068000" />
-      <workItem from="1574570527516" duration="3610000" />
+      <workItem from="1574570527516" duration="4884000" />
     </task>
     <servers />
   </component>

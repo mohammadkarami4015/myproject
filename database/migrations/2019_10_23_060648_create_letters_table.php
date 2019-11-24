@@ -20,13 +20,13 @@ class CreateLettersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')
-                ->onDelete('set null')->onUpdate('cascade');
+               ->onUpdate('cascade');
         });
         Schema::create('letter_user', function (Blueprint $table) {
 
             $table->unsignedBigInteger('letter_id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->foreign('letter_id')->references('id')->on('letters')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('exp_time')->default(null);
             $table->primary(['user_id','letter_id']);
