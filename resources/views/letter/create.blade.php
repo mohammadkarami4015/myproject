@@ -54,13 +54,13 @@
                                     </label>
                                     <label  style="position: absolute;margin-right: -600px; margin-top: 50px">start</label>
                                         <div style="width: 200px" class="col-md-5">
-                                            <input type="text" readonly name="start_date[{{$user->id}}]"
+                                            <input type="text" readonly name="expire_date[{{$user->id}}]"
                                                    class="form-control pull-right tarikh"
                                             >
                                         </div>
                                     <label  style="position: absolute;margin-right: -390px; margin-top: 50px">end</label>
                                         <div style="width: 200px" class="col-md-5">
-                                            <input type="text" readonly name="expire_date[{{$user->id}}]"
+                                            <input type="text" readonly name="start_date[{{$user->id}}]"
                                                    class="form-control pull-right tarikh"
                                             >
                                         </div>

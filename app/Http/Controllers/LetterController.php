@@ -18,9 +18,6 @@ class LetterController extends Controller
 
     public function index()
     {
-//        $var =Verta::parse('22/09/1398 22:10');
-//        dd( $var->DateTime()->format('Y-m-d H:i:s')); // 2017-05-23 23:21:02);
-
         $letters = Letter::latest()->get();
         return view('letter.index', compact('letters'));
     }
@@ -71,16 +68,13 @@ class LetterController extends Controller
 
     public function create()
     {
-
         $users = $this->getChilds();
-        $time = Letter::time();
-        return view('letter.create', compact('users', 'time'));
+        return view('letter.create', compact('users'));
     }
 
 
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'title' => 'required|max:30',
             'details' => 'required|min:10',
@@ -91,24 +85,12 @@ class LetterController extends Controller
             'details' => $request->details,
             'user_id' => auth()->user()->id
         ]);
+        Letter::attachDateInPivot($request->user_id, $request->start_date, $request->expire_date,$letter);
 
-        if ($request->has('user_id')) {
-            foreach ($request->user_id as $userId) {
-                $startTime = Letter::convertTime($request->start_date[$userId]);
-                $expireTime = Letter::convertTime($request->expire_date[$userId]);
-                if ($request->expire_date[$userId] != null) {
-                    $letter->users()->attach($userId, [
-                        'created_at' => $startTime,
-                        'exp_time' => $expireTime,
-                    ]);
-                } else {
-                    $letter->users()->attach($userId, ['created_at' => $startTime]);
-                }
-            }
-        }
         $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت اضافه شد!...');
         return back();
     }
+
 
     public function show(Letter $letter)
     {
@@ -141,22 +123,7 @@ class LetterController extends Controller
 
             $letter->users()->detach();
 
-
-            if ($request->has('user_id')) {
-                foreach ($request->user_id as $userId) {
-                    $startTime = Letter::convertTime($request->start_date[$userId]);
-                    $expireTime = Letter::convertTime($request->expire_date[$userId]);
-                    if ($request->expire_date[$userId] != null) {
-                        $letter->users()->attach($userId, [
-                            'created_at' => $startTime,
-                            'exp_time' => $expireTime,
-                        ]);
-                    } else {
-                        $letter->users()->attach($userId, ['created_at' => $startTime]);
-                    }
-                }
-            }
-
+            Letter::attachDateInPivot($request->user_id, $request->start_date, $request->expire_date, $letter);
 
             $request->session()->flash('flash_message', 'نامه مورد نطر با موفقیت ویرایش شد.');
             return back();

@@ -15,12 +15,14 @@
         <table class="table table-hover">
             <tbody><tr>
                 <th>عنوان نامه</th>
+                <th>متن نامه</th>
                 <th>نویسنده</th>
                 <th>تنظیمات</th>
             </tr>
             @foreach($letters as $letter)
                 <tr>
                     <td>{{$letter->title}}</td>
+                    <td>{{$letter->details}}</td>
                     <td>{{$letter->user['name']}}</td>
                     <td>
                         <form onsubmit="return confirm('آیا مایل به حذف این نقش می باشید؟');" method="post"
@@ -28,7 +30,7 @@
                             {{csrf_field()}}
                             {{method_field('delete')}}
                             <div class="btn-group btn-group-xs">
-                                <a href="{{route('letter.show',['id'=>$letter->id])}}" class="btn btn-success">جزییات</a>
+{{--                                <a href="{{route('letter.show',['id'=>$letter->id])}}" class="btn btn-success">جزییات</a>--}}
                                 <a href="{{route('letter.edit',['id'=>$letter->id])}}" class="btn btn-primary">ویرایش</a>
                                 <button type="submit" class="btn btn-danger">حذف</button>
                             </div>
