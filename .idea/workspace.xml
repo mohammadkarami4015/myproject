@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8df3e024-a298-43ba-b4cd-47287da5837c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_23_060648_create_letters_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_23_060648_create_letters_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/LetterTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/LetterTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -172,9 +171,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.Feature">
+  <component name="RunManager" selected="PHPUnit.LetterTest.can_user_update_his_letters">
     <configuration name="Feature" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner directory="$PROJECT_DIR$/tests/Feature" />
+      <method v="2" />
+    </configuration>
+    <configuration name="LetterTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\LetterTest" file="$PROJECT_DIR$/tests/Feature/LetterTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <configuration name="LetterTest.can_user_see_accessLetters" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -185,12 +188,8 @@
       <TestRunner class="Tests\Feature\LetterTest" file="$PROJECT_DIR$/tests/Feature/LetterTest.php" method="can_user_see_expiredLetters" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="RoleTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\RoleTest" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" scope="Class" />
-      <method v="2" />
-    </configuration>
-    <configuration name="RoleTest.required_field_for_userStore" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\RoleTest" file="$PROJECT_DIR$/tests/Feature/RoleTest.php" method="required_field_for_userStore" scope="Method" />
+    <configuration name="LetterTest.can_user_update_his_letters" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\LetterTest" file="$PROJECT_DIR$/tests/Feature/LetterTest.php" method="can_user_update_his_letters" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -199,11 +198,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.LetterTest.can_user_update_his_letters" />
+        <item itemvalue="PHPUnit.LetterTest" />
         <item itemvalue="PHPUnit.Feature" />
         <item itemvalue="PHPUnit.LetterTest.can_user_see_expiredLetters" />
         <item itemvalue="PHPUnit.LetterTest.can_user_see_accessLetters" />
-        <item itemvalue="PHPUnit.RoleTest.required_field_for_userStore" />
-        <item itemvalue="PHPUnit.RoleTest" />
       </list>
     </recent_temporary>
   </component>
@@ -251,7 +250,7 @@
       <workItem from="1574311152701" duration="5432000" />
       <workItem from="1574318286545" duration="6537000" />
       <workItem from="1574484092784" duration="25068000" />
-      <workItem from="1574570527516" duration="4884000" />
+      <workItem from="1574570527516" duration="5235000" />
     </task>
     <servers />
   </component>
